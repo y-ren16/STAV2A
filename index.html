@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="share.css">
+    <title>TiCodec</title>
+</head>
+<body>
+    <div id="layout">
+        <div id="main">
+            <h1 id="title">Video-to-Audio Generation with Semantic and Temporal Alignment</h1>
+            <div id="content">
+                <h2>Abstract</h2>
+                <p>Visual and auditory perception are two crucial ways humans experience the world. Text-to-video generation has made remarkable progress over the past year, but the absence of harmonious audio in generated video limits its broader applications. Generating semantically and temporally aligned audio with videos presents considerable challenges in generative artificial intelligence. In this paper, we proposed Semantic and Temporal Aligned Video-to-Audio (STAV2A), a latent diffusion model based approach that generates audio by conditioning on both video features and text descriptions, ensuring a match with the videos. STAV2A is initialized using a pre-trained Text-to-Audio model to retain audio generation capability. The guidance of text descriptions and video features through cross-attention and ControlNet ensures alignment of the generated audio with the video. We further improve temporal alignment, semantic relevance, and generation quality of the generated audios by employing an onset predict pretext task and a video feature enhancement module. We also proposed a new objective metric AA-Align to evaluate the degree of temporal alignment between the generated audio and the target audio. Experimental results demonstrate that STAV2A performs state-of-the-art in synthesizing audio semantically and temporally aligned with videos on VGGSound. </p>
+                <img src="imgs/Framework-v2.png" alt="Framework of STAV2A">
+                <h2>Code</h2>
+                <p>Our Code will be available at: </p>
+                <a href="https://github.com/y-ren16/STAV2A">STAV2A</a>
+                <!-- <a class="git-link" href="https://github.com/y-ren16/TiCodec"></a> -->
+                <!-- <a href="https://github.com/y-ren16/TiCodec">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" 
+                    src="http://images2015.cnblogs.com/blog/682661/201612/682661-20161210223653179-1870729401.png"
+                    alt="Fork me on GitHub" >
+                </a> -->
+                <h2>Demos</h2>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>GT</th>
+                                <th>STAV2A (Ours)</th>
+                                <th>Im2Wav</th>
+                                <th>Diff-Foley</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>1</th>
+                            <td><video src="group1/_DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/_DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/_DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/_DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td><video src="group1/_IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/_IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/_IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/_IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td><video src="group1/_s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/_s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/_s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/_s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td><video src="group1/_UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/_UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/_UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/_UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td><video src="group1/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td><video src="group1/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <td><video src="group1/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <td><video src="group1/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>9</th>
+                            <td><video src="group1/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <tr>
+                            <th>10</th>
+                            <td><video src="group1/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
+                        </tr>
+                        <!-- <tr>
+                            <th>11</th>
+                            <td><video src="group1/xx.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group4/xx.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group5/xx.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="group3/xx.mp4" controls width="160" height="135"></video></td>
+                        </tr> -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
