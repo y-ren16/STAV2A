@@ -12,8 +12,8 @@
             <h1 id="title">Video-to-Audio Generation with Semantic and Temporal Alignment</h1>
             <div id="content">
                 <h2>Abstract</h2>
-                <p>Visual and auditory perception are two crucial ways humans experience the world. Text-to-video generation has made remarkable progress over the past year, but the absence of harmonious audio in generated video limits its broader applications. In this paper, we proposed Semantic and Temporal Aligned Video-to-Audio (STAV2A), a Latent Diffusion Model based approach that generates audio by conditioning on both text descriptions and video features, thereby ensuring semantic and temporal synchronization with the videos. STAV2A initializes the audio generation model using a pre-trained Text-to-Audio model and incorporates video features as conditional controls, resulting in high-quality audio that is well-matched with the target video. We employ a contrastive audio-visual pre-training model to extract video features. After that, we introduce an onset predict pretext task for obtaining local video representations enriched with temporal features and an attentive pooling module to yield global video representations with semantic features. We also proposed a new objective metric AA-Align to evaluate the degree of temporal alignment between the generated audio and the target audio. Experimental results demonstrate that STAV2A exhibits superior performance in synthesizing audio that is semantically and temporally aligned with videos. </p>
-                <img src="GitPages/imgs/Framework-v4.png" alt="Framework of STAV2A">
+                <p>Visual and auditory perception are two crucial ways humans experience the world. Text-to-video generation has made remarkable progress over the past year, but the absence of harmonious audio in generated video limits its broader applications. In this paper, we propose Semantic and Temporal Aligned Video-to-Audio (STA-V2A), an approach that generates audio by conditioning on both text and video features, ensuring semantic and temporal alignment with the videos. First, we propose an onset predict pretext task for obtaining local temporal features of video, and an attentive pooling module to yield global semantic features of video. Then we proposed a Latent Diffusion Model initialized by Text-To-Audio prior knowledge and guided by cross-modal features from text and video. Finally, We propose a new objective metric, AA-Align, to evaluate the temporal alignment between the generated and target audio. Subjective and objective experiments demonstrate that our method surpasses existing Video-to-Audio models in generating audio with better quality, semantic alignment, and temporal alignment. The ablation experiment validated the effectiveness of each module. </p>
+                <img src="GitPages/imgs/Framework-v6.png" alt="Framework of STAV2A">
                 <h2>Code</h2>
                 <p>Our Code will be available at: </p>
                 <a href="https://github.com/y-ren16/STAV2A">STAV2A</a>
@@ -34,84 +34,118 @@
                                 <th>STAV2A (Ours)</th>
                                 <th>Im2Wav</th>
                                 <th>Diff-Foley</th>
+                                <th>VTA-LDM</th>
+                                <!-- <th>FoleyCrafter (v2a)</th> -->
+                                <!-- <th>FoleyCrafter (vt2a)</th> -->
+                                <th>FoleyCrafter</th>
                             </tr>
                         </thead>
                         <tr>
                             <th>1</th>
-                            <td><video src="GitPages/video/group1/DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/DxgZZInOX0_000062.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/DxgZZInOX0_000062.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>2</th>
-                            <td><video src="GitPages/video/group1/IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/IRbkl8qZfk_000110.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/IRbkl8qZfk_000110.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>3</th>
-                            <td><video src="GitPages/video/group1/s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/s_DXYISn9A_000050.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/s_DXYISn9A_000050.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>4</th>
-                            <td><video src="GitPages/video/group1/UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/UsNATz1sgE_000250.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/UsNATz1sgE_000250.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>5</th>
-                            <td><video src="GitPages/video/group1/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/0_ixmalQrig_000100.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/0_ixmalQrig_000100.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>6</th>
-                            <td><video src="GitPages/video/group1/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/0e_96pcTzKQ_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/0e_96pcTzKQ_000030.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>7</th>
-                            <td><video src="GitPages/video/group1/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/0P_wTB0WmZY_000030.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/0P_wTB0WmZY_000030.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>8</th>
-                            <td><video src="GitPages/video/group1/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/1XBz00U_pv0_000180.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/1XBz00U_pv0_000180.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>9</th>
-                            <td><video src="GitPages/video/group1/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/2zDyhVx0-70_000290.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/2zDyhVx0-70_000290.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <tr>
                             <th>10</th>
-                            <td><video src="GitPages/video/group1/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/3-S_AyVj1Ck_000049.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group6/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
+                            <!-- <td><video src="GitPages/video/group7/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td> -->
+                            <td><video src="GitPages/video/group8/3-S_AyVj1Ck_000049.mp4" controls width="140" height="120"></video></td>
                         </tr>
                         <!-- <tr>
                             <th>11</th>
-                            <td><video src="GitPages/video/group1/xx.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group4/xx.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group5/xx.mp4" controls width="160" height="135"></video></td>
-                            <td><video src="GitPages/video/group3/xx.mp4" controls width="160" height="135"></video></td>
+                            <td><video src="GitPages/video/group1/xx.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group4/xx.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group5/xx.mp4" controls width="140" height="120"></video></td>
+                            <td><video src="GitPages/video/group3/xx.mp4" controls width="140" height="120"></video></td>
                         </tr> -->
                     </table>
                 </div>
