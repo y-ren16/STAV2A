@@ -12,8 +12,7 @@ save_dir=(
   "data_vgg"
 )
 json_file_name=(
-  "data/vgg_dataset_v2a_test_av_align_filter_filter.json"
-  # "data/test.json"
+  "data/test.json"
 )
 gpu_id=(
   0

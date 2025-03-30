@@ -208,7 +208,7 @@ def main():
            video.append(input_file[args.video_key])
            wavname.append(os.path.basename(input_file[args.video_key].replace(".mp4", ".wav")))
            if args.video_feature_key is not None:
-                video_feature_paths.append(audio_feature_path)
+                video_feature_paths.append(input_file[args.video_feature_key])
 
     # with open(args.test_file) as f:
     #     data = f.read()
